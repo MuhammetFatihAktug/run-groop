@@ -30,9 +30,7 @@
                            href="#!">Project name</a>
                     </div>
                     <a class="btn btn-primary" th:href="@{/clubs/{clubId}(clubId=${club.id})}">View</a>
-                    <div th:if="${user.id} == ${club.createdBy.id}">
-                        <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>
-                    </div>
+
                 </div>
             </div>
         </div>
