@@ -4,14 +4,18 @@ import org.example.rungroop.dto.ClubDto;
 import org.example.rungroop.models.Club;
 import org.example.rungroop.repository.ClubRepository;
 import org.example.rungroop.services.ClubService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ClubServiceImpl implements ClubService {
     private ClubRepository clubRepository;
 
 
+    @Autowired
     public ClubServiceImpl(ClubRepository clubRepository) {
         this.clubRepository = clubRepository;
     }
