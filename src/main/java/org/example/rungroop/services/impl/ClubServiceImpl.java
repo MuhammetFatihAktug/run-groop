@@ -1,5 +1,6 @@
 package org.example.rungroop.services.impl;
 
+<<<<<<< HEAD
 import org.example.rungroop.dto.ClubDto;
 import org.example.rungroop.models.Club;
 import org.example.rungroop.repository.ClubRepository;
@@ -36,4 +37,7 @@ public class ClubServiceImpl implements ClubService {
     }
 
 
+=======
+public class ClubServiceImple {
+>>>>>>> origin/master
 }
