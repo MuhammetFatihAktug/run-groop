@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+
 public class ClubServiceImpl implements ClubService {
     private ClubRepository clubRepository;
 
@@ -29,6 +30,29 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public Club saveClub(Club club) {
         return clubRepository.save(club);
+    }
+
+    @Override
+    public ClubDto findClubById(Long clubId) {
+        Club club = clubRepository.findById(clubId).get();
+        return mapToClubDto(club);
+    }
+
+    @Override
+    public void updateClub(ClubDto clubDto) {
+        Club club = mapToClub(clubDto);
+        clubRepository.save(club);
+    }
+
+    private Club mapToClub(ClubDto club) {
+        return Club.builder()
+                .id(club.getId())
+                .title(club.getTitle())
+                .photoUrl(club.getPhotoUrl())
+                .content(club.getContent())
+                .createdOn(club.getCreatedOn())
+                .updatedOn(club.getUpdatedOn())
+                .build();
     }
 
     private ClubDto mapToClubDto(Club club) {

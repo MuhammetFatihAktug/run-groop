@@ -9,7 +9,9 @@
 <main class="flex-shrink-0">
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}" class="row g-3">
+            <form role="form" method="post" th:action="@{/clubs/{clubId}/edit(clubId=${club.id})}" th:object="${club}"
+                  class="row g-3">
+                <input type="hidden" th:field="*{id}">
                 <div class="col-md-6">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title" th:field="*{title}"
