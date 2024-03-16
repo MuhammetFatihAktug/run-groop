@@ -9,28 +9,43 @@
 <main class="flex-shrink-0">
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form role="form" method="post" th:action="@{/clubs/{clubId}/edit(clubId=${club.id})}" th:object="${club}"
-                  class="row g-3">
-                <input type="hidden" th:field="*{id}">
-                <div class="col-md-6">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" th:field="*{title}"
-                           placeholder="Title">
+            <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="title">Title</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="title"
+                                name="title"
+                                th:field="*{title}"
+                                placeholder="Title">
+                        <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="photoUrl">Photourl</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="photoUrl"
+                                name="photoUrl"
+                                th:field="*{photoUrl}"
+                                placeholder="Photo Url">
+                        <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="photoUrl" class="form-label">PhotoUrl</label>
-                    <input type="text" class="form-control" name="photoUrl" placeholder="photoUrl"
-                           th:field="*{photoUrl}" id="photoUrl">
+                <div class="form-group mb-3">
+                    <label for="content">Content</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="content"
+                            name="content"
+                            th:field="*{content}"
+                            placeholder="1234 Main St">
+                    <p th:if="${#fields.hasErrors('content')}" class="text-danger" th:errors="*{content}"></p>
                 </div>
-                <div class="col-12">
-                    <label for="content" class="form-label">Content</label>
-                    <input type="text" class="form-control" placeholder="Content" th:field="*{content}"
-                           id="content">
-                </div>
-
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
     </section>
