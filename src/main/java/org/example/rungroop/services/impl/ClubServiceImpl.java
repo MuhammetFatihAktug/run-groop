@@ -1,6 +1,7 @@
 package org.example.rungroop.services.impl;
 
 import org.example.rungroop.dto.ClubDto;
+import org.example.rungroop.mapper.ClubMapper;
 import org.example.rungroop.models.Club;
 import org.example.rungroop.repository.ClubRepository;
 import org.example.rungroop.services.ClubService;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.example.rungroop.mapper.ClubMapper.mapToClub;
+import static org.example.rungroop.mapper.ClubMapper.mapToClubDto;
 
 @Service
 
@@ -24,7 +28,7 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public List<ClubDto> findAllClubs() {
         List<Club> clubs = clubRepository.findAll();
-        return clubs.stream().map(this::mapToClubDto).collect(Collectors.toList());
+        return clubs.stream().map(ClubMapper::mapToClubDto).collect(Collectors.toList());
     }
 
     @Override
@@ -51,30 +55,8 @@ public class ClubServiceImpl implements ClubService {
 
     @Override
     public List<ClubDto> searchClubs(String query) {
-        return clubRepository.searchClubs(query).stream().map(this::mapToClubDto).collect(Collectors.toList());
+        return clubRepository.searchClubs(query).stream().map(ClubMapper::mapToClubDto).collect(Collectors.toList());
     }
 
-    private Club mapToClub(ClubDto club) {
-        return Club.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-    }
-
-    private ClubDto mapToClubDto(Club club) {
-        return ClubDto.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .photoUrl(club.getPhotoUrl())
-                .content(club.getContent())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-
-    }
 
 }

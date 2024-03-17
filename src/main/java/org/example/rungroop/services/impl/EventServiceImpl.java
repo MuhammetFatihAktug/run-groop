@@ -1,6 +1,7 @@
 package org.example.rungroop.services.impl;
 
 import org.example.rungroop.dto.EventDto;
+import org.example.rungroop.mapper.EventMapper;
 import org.example.rungroop.models.Club;
 import org.example.rungroop.models.Event;
 import org.example.rungroop.repository.ClubRepository;
@@ -9,7 +10,12 @@ import org.example.rungroop.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static org.example.rungroop.mapper.EventMapper.mapToEvent;
+import static org.example.rungroop.mapper.EventMapper.mapToEventDto;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -30,30 +36,9 @@ public class EventServiceImpl implements EventService {
         eventRepository.save(event);
     }
 
-    private Event mapToEvent(EventDto eventDto) {
-        return Event.builder()
-                .club(eventDto.getClub())
-                .id(eventDto.getId())
-                .name(eventDto.getName())
-                .type(eventDto.getType())
-                .createdOn(eventDto.getCreatedOn())
-                .endTime(eventDto.getEndTime())
-                .updateOn(eventDto.getUpdateOn())
-                .photoUrl(eventDto.getPhotoUrl())
-                .build();
-    }
-
-    private EventDto mapToEventDto(Event event) {
-        return EventDto.builder()
-                .club(event.getClub())
-                .id(event.getId())
-                .name(event.getName())
-                .type(event.getType())
-                .createdOn(event.getCreatedOn())
-                .endTime(event.getEndTime())
-                .updateOn(event.getUpdateOn())
-                .photoUrl(event.getPhotoUrl())
-                .build();
+    @Override
+    public List<EventDto> findAllEvents() {
+        return eventRepository.findAll().stream().map(EventMapper::mapToEventDto).collect(Collectors.toList());
     }
 
 
