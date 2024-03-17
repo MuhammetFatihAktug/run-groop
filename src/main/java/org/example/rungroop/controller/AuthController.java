@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AuthController {
     private UserService userService;
 
-
     public AuthController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
     }
 
     @GetMapping("/register")
@@ -25,7 +29,6 @@ public class AuthController {
         RegistrationDto user = new RegistrationDto();
         model.addAttribute("user", user);
         return "register";
-
     }
 
     @PostMapping("/register/save")
@@ -45,10 +48,5 @@ public class AuthController {
         }
         userService.saveUser(user);
         return "redirect:/clubs?success";
-    }
-
-    @GetMapping("/login")
-    public String loginPage(){
-        return "login";
     }
 }

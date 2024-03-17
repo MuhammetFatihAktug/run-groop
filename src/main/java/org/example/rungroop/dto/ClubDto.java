@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
 import org.example.rungroop.models.Event;
+import org.example.rungroop.models.UserEntity;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -23,5 +24,6 @@ public class ClubDto {
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private List<EventDto> events;
+    private UserEntity createdBy;
 
 }
