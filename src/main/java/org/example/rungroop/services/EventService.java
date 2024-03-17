@@ -8,4 +8,6 @@ public interface EventService {
     void createEvent(Long clubId, EventDto eventDto);
 
     List<EventDto> findAllEvents();
+
+    EventDto findByEventId(Long eventID);
 }
