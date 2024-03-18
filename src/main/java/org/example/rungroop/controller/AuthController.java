@@ -54,13 +54,6 @@ public class AuthController {
         userService.saveUser(user);
         return "redirect:/clubs?success";
     }
-<<<<<<< HEAD
 }
-=======
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
-}
->>>>>>> temp_branch
+
