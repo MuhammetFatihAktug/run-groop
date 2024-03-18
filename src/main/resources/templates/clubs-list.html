@@ -12,6 +12,12 @@
             <div th:if="${param.success}" class="alert alert-success">
                 You are registered successfully!
             </div>
+<<<<<<< HEAD
+=======
+            <div th:if="${param.error}" class="alert alert-success">
+                Basarisiz giris
+            </div>
+>>>>>>> temp_branch
             <div class="text-center mb-5">
                 <h1 class="fw-bolder">Find Running Clubs</h1>
                 <p class="lead fw-normal text-muted mb-0">Groups of passionate near you</p>
@@ -28,7 +34,11 @@
                         <a th:text="${club.title}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
                     <a class="btn btn-primary" th:href="@{/clubs/{clubId}(clubId=${club.id})}">View</a>
+<<<<<<< HEAD
                     <div >
+=======
+                    <div th:if="${user.id} == ${club.createdBy.id}">
+>>>>>>> temp_branch
                         <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>
                     </div>
                 </div>
