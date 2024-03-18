@@ -33,14 +33,19 @@ public class AuthController {
                            BindingResult result, Model model) {
         UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
         if (existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
+            System.out.println("hata1");
+
             return "redirect:/register?fail";
         }
         UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
         if (existingUserUsername != null && existingUserUsername.getUsername() != null && !existingUserUsername.getUsername().isEmpty()) {
+            System.out.println("hata2");
             return "redirect:/register?fail";
+
         }
         if (result.hasErrors()) {
             model.addAttribute("user", user);
+            System.out.println("hata3");
             return "register";
         }
         userService.saveUser(user);
@@ -48,7 +53,7 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String loginPage(){
+    public String loginPage() {
         return "login";
     }
 }

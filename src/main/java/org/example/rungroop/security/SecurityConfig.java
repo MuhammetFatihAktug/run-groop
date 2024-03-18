@@ -15,18 +15,16 @@ public class SecurityConfig {
         http
                 .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/clubs", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/login", "/register","/register/save", "/clubs", "/css/**", "/js/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/clubs", true)
+                        .defaultSuccessUrl("/clubs")
                         .loginProcessingUrl("/login")
                         .failureUrl("/login?error=true")
                         .permitAll())
                 .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
-                        .permitAll());
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll());
         return http.build();
     }
 
