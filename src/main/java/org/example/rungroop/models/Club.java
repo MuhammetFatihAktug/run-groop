@@ -14,11 +14,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Builder
-@Data
+@Entity
 @Table(name = "clubs")
 public class Club {
     @Id
