@@ -43,7 +43,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 ```
 7. Access URL: You can access the application at http://localhost:8080.
 
-Screenshots:
+## Screenshots:
 Screenshot 0: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img1.PNG)
 
 Screenshot 1: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img2.PNG)
