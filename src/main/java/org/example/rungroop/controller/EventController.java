@@ -4,7 +4,10 @@ import jakarta.validation.Valid;
 import org.example.rungroop.dto.ClubDto;
 import org.example.rungroop.dto.EventDto;
 import org.example.rungroop.models.Event;
+import org.example.rungroop.models.UserEntity;
+import org.example.rungroop.security.SecurityUtil;
 import org.example.rungroop.services.EventService;
+import org.example.rungroop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +24,12 @@ public class EventController {
 
     private EventService eventService;
 
+    private UserService userService;
+
     @Autowired
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, UserService userService) {
         this.eventService = eventService;
+        this.userService = userService;
     }
 
     @GetMapping("/events/{clubId}/new")
@@ -48,14 +54,29 @@ public class EventController {
 
     @GetMapping("/events")
     public String eventList(Model model) {
+        UserEntity user = new UserEntity();
         List<EventDto> events = eventService.findAllEvents();
+        String username = SecurityUtil.getSessionUser();
+        if (username != null) {
+            user = userService.findByUsername(username);
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("user", user);
         model.addAttribute("events", events);
         return "events-list";
     }
 
     @GetMapping("/events/{eventId}")
     public String viewEvent(@PathVariable("eventId") Long eventID, Model model) {
+        UserEntity user = new UserEntity();
         EventDto eventDto = eventService.findByEventId(eventID);
+        String username = SecurityUtil.getSessionUser();
+        if (username != null) {
+            user = userService.findByUsername(username);
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("club", eventDto.getClub());
+        model.addAttribute("user", user);
         model.addAttribute("event", eventDto);
         return "events-detail";
     }

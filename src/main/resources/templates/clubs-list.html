@@ -12,7 +12,6 @@
             <div th:if="${param.success}" class="alert alert-success">
                 You are registered successfully!
             </div>
-
             <div class="text-center mb-5">
                 <h1 class="fw-bolder">Find Running Clubs</h1>
                 <p class="lead fw-normal text-muted mb-0">Groups of passionate near you</p>
@@ -31,12 +30,8 @@
                            href="#!">Project name</a>
                     </div>
                     <a class="btn btn-primary" th:href="@{/clubs/{clubId}(clubId=${club.id})}">View</a>
-                    <div>
-
-                        <div>
-
-                            <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>
-                        </div>
+                    <div th:if="${user.id} == ${club.createdBy.id}">
+                        <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit</a>
                     </div>
                 </div>
             </div>
