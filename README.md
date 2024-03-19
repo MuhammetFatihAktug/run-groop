@@ -1,7 +1,7 @@
 # RunGroop Web Application Clone
 
 ## Description:
-RunGroop web application clone is an example of backend architecture usage in Java. This clone repository was created by Teddy Smith and the development process was shown online in video format on YouTube. This application was built using Spring, Spring-Security, Thymeleaf, Hibernate, and MVC architectures. Necessary package and code updates have been made to comply with today's standards.
+RunGroop web application clone is an example of backend architecture usage in Java. This clone repository was created by [Teddy Smith](https://github.com/teddysmithdev/RunGroop-Java) and the development process was shown online in video format on YouTube. This application was built using Spring, Spring-Security, Thymeleaf, Hibernate, and MVC architectures. Necessary package and code updates have been made to comply with today's standards.
 
 ### Changes Made in the Project:
 The updates made in the security chain of the project are as follows:
@@ -44,12 +44,12 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 7. Access URL: You can access the application at http://localhost:8080.
 
 ## Screenshots:
-Screenshot 0: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img1.PNG)
+![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img1.PNG)
 
-Screenshot 1: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img2.PNG)
+![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img2.PNG)
 
-Screenshot 2: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img3.PNG)
+![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img3.PNG)
 
-Screenshot 3: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img4.PNG)
+![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img4.PNG)
 
-Screenshot 4: ![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img5.PNG)
+![Link](https://github.com/MuhammetFatihAktug/run-groop/blob/master/src/main/resources/static/assets/img5.PNG)
